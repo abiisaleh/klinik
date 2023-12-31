@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Des 2023 pada 11.09
+-- Waktu pembuatan: 31 Des 2023 pada 11.31
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kode_pasien`
+-- Struktur dari tabel `layanan`
 --
 
-CREATE TABLE `kode_pasien` (
+CREATE TABLE `layanan` (
   `id` int(11) NOT NULL,
   `tanggal` date NOT NULL DEFAULT current_timestamp(),
   `asesmen` text NOT NULL,
@@ -38,10 +38,10 @@ CREATE TABLE `kode_pasien` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `registrasi`
+-- Struktur dari tabel `pendaftaran`
 --
 
-CREATE TABLE `registrasi` (
+CREATE TABLE `pendaftaran` (
   `id` int(11) NOT NULL,
   `kode` varchar(25) NOT NULL,
   `nama` varchar(25) NOT NULL,
@@ -51,35 +51,45 @@ CREATE TABLE `registrasi` (
   `alamat` text NOT NULL,
   `jenis` enum('Umum','Mahasiswa','Dosen') NOT NULL,
   `nim` varchar(25) NOT NULL,
-  `gejala` varchar(25) NOT NULL
+  `gejala` varchar(25) NOT NULL,
+  `fk_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `registrasi`
+-- Struktur dari tabel `user`
 --
 
-INSERT INTO `registrasi` (`id`, `kode`, `nama`, `jk`, `tempatlahir`, `ttl`, `alamat`, `jenis`, `nim`, `gejala`) VALUES
-(1, '2f45', 'riska comel', 'P', 'sunda', '2004-05-27', 'cibolang', 'Umum', '20220050112', 'terlalu kaya'),
-(4, '1234333', 'riska', 'L', 'jayapura', '2000-02-07', 'maslakunnidzom', 'Dosen', '20220050112', 'banyak uang'),
-(5, '1234333', 'riska', '', 'jayapura', '0000-00-00', 'maslakunnidzom', '', '20220050112', 'banyak uang'),
-(6, '', '', '', '', '0000-00-00', '', '', '', ''),
-(10, '1234', '', '', '', '0000-00-00', '', '', '', ''),
-(11, '1234333', '', '', '', '0000-00-00', '', '', '', '');
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `password` text NOT NULL,
+  `level` enum('admin','pasien','dokter','pimpinan') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `kode_pasien`
+-- Indeks untuk tabel `layanan`
 --
-ALTER TABLE `kode_pasien`
+ALTER TABLE `layanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `registrasi`
+-- Indeks untuk tabel `pendaftaran`
 --
-ALTER TABLE `registrasi`
+ALTER TABLE `pendaftaran`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user` (`fk_user`);
+
+--
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -87,16 +97,32 @@ ALTER TABLE `registrasi`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `kode_pasien`
+-- AUTO_INCREMENT untuk tabel `layanan`
 --
-ALTER TABLE `kode_pasien`
+ALTER TABLE `layanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `registrasi`
+-- AUTO_INCREMENT untuk tabel `pendaftaran`
 --
-ALTER TABLE `registrasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `pendaftaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  ADD CONSTRAINT `pendaftaran_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
