@@ -18,6 +18,8 @@ if (isset($_POST)) {
             VALUES ('$kode', '$nama', '$jk', '$tempatlahir', '$ttl', '$alamat', '$jenis', '$nim', '$gejala')";
     $query = mysqli_query($connection, $sql);
 
+    session_start();
+
     // apakah query simpan berhasil?
     if ($query) {
         $_SESSION['alert'] = [
