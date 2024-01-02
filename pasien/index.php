@@ -1,9 +1,9 @@
 <?php
 
-require_once "../config.php";
+require_once "pasienModel.php";
 
-$sql = "SELECT * FROM pendaftaran";
-$query = mysqli_query($connection, $sql);
+$table = new pasienModel;
+$query = $table->findAll();
 
 $title = "Pasien";
 require_once "../template/header.php";
