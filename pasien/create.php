@@ -1,6 +1,6 @@
 <?php
 $title = "Pasien Baru";
-require_once "../template/header.php"
+include("../template/header.php")
 ?>
 
 <div class="col-12">
@@ -101,4 +101,4 @@ require_once "../template/header.php"
     </div>
 </div>
 
-<?php require_once "../template/footer.php" ?>
+<?php include "../template/footer.php" ?>

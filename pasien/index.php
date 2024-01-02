@@ -1,12 +1,12 @@
 <?php
 
-require_once "../config.php";
+include("../config.php");
 
 $sql = "SELECT * FROM pendaftaran";
 $query = mysqli_query($connection, $sql);
 
 $title = "Pasien";
-require_once "../template/header.php";
+include "../template/header.php";
 ?>
 
 <div class="col-12">
@@ -51,4 +51,4 @@ require_once "../template/header.php";
 <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/pages/simple-datatables.js"></script>
 
-<?php require_once "../template/footer.php" ?>
+<?php include "../template/footer.php" ?>
