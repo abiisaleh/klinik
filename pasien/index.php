@@ -1,9 +1,9 @@
 <?php
 
-require_once "pasienModel.php";
+require_once "../model/pasienModel.php";
 
-$table = new pasienModel;
-$query = $table->findAll();
+$model = new pasienModel();
+$query = $model->findAll();
 
 $title = "Pasien";
 require_once "../template/header.php";
@@ -27,7 +27,7 @@ require_once "../template/header.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($result = mysqli_fetch_array($query)) : ?>
+                    <?php while ($result = $query->fetch_array()) : ?>
                         <tr>
                             <td><?= $result['kode'] ?></td>
                             <td><?= $result['nama'] ?></td>

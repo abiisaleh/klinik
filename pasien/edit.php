@@ -1,18 +1,13 @@
 <?php
-include("../config.php");
+include("../model/pasienModel.php");
 
 if (!isset($_GET['id'])) {
     header('Location: pasien');
 }
 $id = $_GET['id'];
-$sql = "SELECT * FROM pendaftaran WHERE id=$id";
-$query = mysqli_query($connection, $sql);
 
-$result = mysqli_fetch_assoc($query);
-
-if (mysqli_num_rows($query) < 1) {
-    die("Data tidak ditemukan...");
-}
+$model = new pasienModel();
+$result = $model->find($id);
 
 $title = "Ubah Pasien";
 require_once "../template/header.php";
