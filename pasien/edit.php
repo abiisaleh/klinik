@@ -15,7 +15,7 @@ if (mysqli_num_rows($query) < 1) {
 }
 
 $title = "Ubah Pasien";
-require_once "../template/header.php";
+include "../template/header.php";
 ?>
 
 <div class="col-12">
@@ -115,4 +115,4 @@ require_once "../template/header.php";
     </div>
 </div>
 
-<?php require_once "../template/footer.php" ?>
+<?php include "../template/footer.php" ?>

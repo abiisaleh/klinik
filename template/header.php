@@ -24,10 +24,10 @@
     <!-- Start content here -->
 
     <div id="app">
-        <?php require_once "sidebar.php" ?>
+        <?php include("sidebar.php") ?>
         <div id="main" class='layout-navbar navbar-fixed'>
 
-            <?php require_once "navbar.php" ?>
+            <?php include("navbar.php") ?>
 
             <div id="main-content">
                 <div class="page-heading">
