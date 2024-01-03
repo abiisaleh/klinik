@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
             'msg' => 'data gagal dihapus',
         ];
     }
-    header('Location: /pasien/');
+    header('Location: /pasien/'); 
 } else {
     die("Akses dilarang...");
 }
