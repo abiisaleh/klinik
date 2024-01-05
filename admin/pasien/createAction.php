@@ -14,8 +14,7 @@ if (isset($_POST)) {
     $gejala = $_POST['gejala'];
 
     // buat query  
-    $sql = "INSERT INTO pendaftaran (kode, nama, jk, tempatlahir, ttl, alamat, jenis,nim, gejala) 
-            VALUES ('$kode', '$nama', '$jk', '$tempatlahir', '$ttl', '$alamat', '$jenis', '$nim', '$gejala')";
+    $sql = "INSERT INTO pendaftaran (kode, nama, jk, tempatlahir, ttl, alamat, jenis,nim, gejala) VALUES ('$kode', '$nama', '$jk', '$tempatlahir', '$ttl', '$alamat', '$jenis', '$nim', '$gejala')";
     $query = mysqli_query($connection, $sql);
 
     session_start();

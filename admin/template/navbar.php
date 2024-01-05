@@ -13,8 +13,8 @@
                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-menu d-flex">
                             <div class="user-name text-end me-3">
-                                <h6 class="mb-0 text-gray-600">Nila Sari</h6>
-                                <p class="mb-0 text-sm text-gray-600">Dokter</p>
+                                <h6 class="mb-0 text-gray-600"><?= ucfirst($_SESSION['login']['nama']) ?></h6>
+                                <p class="mb-0 text-sm text-gray-600"><?= $_SESSION['login']['level'] ?></p>
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">
@@ -25,7 +25,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
                         <li>
-                            <h6 class="dropdown-header">Hello, Nila!</h6>
+                            <h6 class="dropdown-header">Hello, <?= $_SESSION['login']['nama'] ?></h6>
                         </li>
                         <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My
                                 Profile</a></li>
@@ -33,7 +33,7 @@
                                 Settings</a></li>
                         <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                        <li><a class="dropdown-item" href="/admin/logout.php"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
                     </ul>
                 </div>
             </div>

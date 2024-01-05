@@ -1,6 +1,6 @@
 <?php
 
-include("../config.php");
+include("../../config.php");
 
 $sql = "SELECT * FROM pendaftaran";
 $query = mysqli_query($connection, $sql);
