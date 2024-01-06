@@ -37,16 +37,14 @@ class model
     public function create(array $data)
     {
         foreach ($data as $key => $value) {
-            $keys[] = "$key";
-            $values[] = "$value";
+            $keys[] = $key;
+            $values[] = "'$value'";
         }
-
 
         $field = implode(", ", $keys);
         $value = implode(", ", $values);
-        var_dump($value);
         $sql = "INSERT INTO $this->table ($field) VALUES ($value)";
-        var_dump($sql);
+        print_r($sql);
         $data = mysqli_query($this->db, $sql);
         return $data;
     }
