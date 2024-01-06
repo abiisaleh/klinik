@@ -1,5 +1,5 @@
 <?php
-require_once "../model/pasienModel.php";
+require_once "../../model/pasienModel.php";
 
 // cek apakah tombol simpan sudah diklik atau belum
 if (isset($_POST)) {
@@ -20,7 +20,7 @@ if (isset($_POST)) {
             'msg' => 'Gagal menyimpan perubahan...',
         ];
     }
-    header('Location: /pasien/');
+    header('Location: /admin/pasien/');
 } else {
     die("Akses dilarang...");
 }

@@ -1,5 +1,5 @@
 <?php
-require_once "../model/pasienModel.php";
+require_once "../../model/pasienModel.php";
 
 if (isset($_POST)) {
     $model = new pasienModel;
@@ -18,7 +18,7 @@ if (isset($_POST)) {
             'msg' => 'data gagal disimpan',
         ];
     }
-    header('Location: /pasien/');
+    header('Location: /admin/pasien/');
 } else {
     die("Akses dilarang...");
 }

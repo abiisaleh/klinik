@@ -13,18 +13,26 @@ class model
         $password = "";
         $db = "klinik";
 
-        $this->db = mysqli_connect($server, $user, $password, $db);
+        try {
+            $this->db = mysqli_connect($server, $user, $password, $db);
 
-        if (!$this->db) {
-            die("Gagal..." . mysqli_connect_error());
+            if (!$this->db) {
+                throw new Exception("Maaf, terjadi kesalahan dalam menghubungkan ke database. Silakan coba lagi nanti.");
+            }
+        } catch (Exception $e) {
+            echo "Gagal menyambungkan ke database. pastikan database sudah dinyalakan";
+            die();
         }
     }
 
     public function findAll()
     {
         $sql = "SELECT * FROM $this->table";
-        $data = mysqli_query($this->db, $sql);
-        return $data;
+
+        while ($row = mysqli_query($this->db, $sql)->fetch_assoc())
+            $data[] = $row;
+
+        return $data ?? [];
     }
 
     public function find($id)

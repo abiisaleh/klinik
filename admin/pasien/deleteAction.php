@@ -1,5 +1,5 @@
 <?php
-require_once "../model/pasienModel.php";
+require_once "../../model/pasienModel.php";
 
 if (isset($_GET['id'])) {
 
@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
             'msg' => 'data gagal dihapus',
         ];
     }
-    header('Location: /pasien/');
+    header('Location: /admin/pasien/');
 } else {
     die("Akses dilarang...");
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/pasienModel.php";
+require_once "../../model/pasienModel.php";
 
 $model = new pasienModel();
 $query = $model->findAll();
@@ -27,7 +27,7 @@ require_once "../template/header.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($result = $query->fetch_array()) : ?>
+                    <?php foreach ($query as $result) : ?>
                         <tr>
                             <td><?= $result['kode'] ?></td>
                             <td><?= $result['nama'] ?></td>
@@ -40,7 +40,7 @@ require_once "../template/header.php";
                                 <a class="btn btn-danger btn-sm" href='deleteAction.php?id=<?= $result['id'] ?>' onclick="return confirm('data akan dihapus');">Delete</a>
                             </td>
                         </tr>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

@@ -5,9 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinik - <?= $title ?></title>
-
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/svg/favicon.svg" type="image/x-icon">
+    <title>Klinik - <?= $title ?? '' ?></title>
 
     <!-- DataTable -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/simple-datatables/style.css">
@@ -31,7 +29,7 @@
 
             <div id="main-content">
                 <div class="page-heading">
-                    <h3><?= $title ?></h3>
+                    <h3><?= $title ?? '' ?></h3>
                 </div>
                 <div class="page-content">
 

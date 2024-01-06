@@ -37,14 +37,14 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item <?= str_contains($title, 'Dashboard') ? 'active' : '' ?> ">
-                    <a href="/" class='sidebar-link'>
+                    <a href="/admin" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item <?= str_contains($title, 'Pasien') ? 'active' : '' ?> ">
-                    <a href="/pasien/" class='sidebar-link'>
+                    <a href="/admin/pasien/" class='sidebar-link'>
                         <i class="bi bi-person-lines-fill"></i>
                         <span>Pasien</span>
                     </a>

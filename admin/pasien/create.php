@@ -6,8 +6,8 @@ require_once "../template/header.php"
 <div class="col-12">
     <div class="card">
         <div class="card-content">
-            <div class="card-body">
-                <form class="form form-horizontal" action="createAction.php" method="POST">
+            <form class="form form-horizontal" action="createAction.php" method="POST">
+                <div class="card-body">
                     <div class="form-body">
                         <div class="row">
 
@@ -89,14 +89,15 @@ require_once "../template/header.php"
                             <div class="col-md-8 form-group">
                                 <input required class="form-control" type="text" name="gejala" placeholder="masukkan gejala pasien" />
                             </div>
-
-                            <div class="col-sm-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                            </div>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="card-footer">
+                    <div class="col-sm-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

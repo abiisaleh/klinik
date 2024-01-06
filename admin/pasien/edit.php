@@ -1,5 +1,5 @@
 <?php
-include("../model/pasienModel.php");
+require_once "../../model/pasienModel.php";
 
 if (!isset($_GET['id'])) {
     header('Location: pasien');
@@ -16,8 +16,8 @@ require_once "../template/header.php";
 <div class="col-12">
     <div class="card">
         <div class="card-content">
-            <div class="card-body">
-                <form class="form form-horizontal" action="editAction.php" method="POST">
+            <form class="form form-horizontal" action="editAction.php" method="POST">
+                <div class="card-body">
                     <div class="form-body">
                         <div class="row">
                             <input type="hidden" name="id" value="<?= $result['id'] ?>">
@@ -62,7 +62,7 @@ require_once "../template/header.php";
                                 <label for="ttl">Tanggal Lahir</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input class="form-control" type="date" name="ttl" id="ttl">
+                                <input class="form-control" type="date" name="ttl" id="ttl" value="<?= $result['ttl'] ?>">
                             </div>
 
                             <div class="col-md-4">
@@ -98,14 +98,16 @@ require_once "../template/header.php";
                             <div class="col-md-8 form-group">
                                 <input class="form-control" type="text" name="gejala" value="<?= $result['gejala'] ?>" placeholder="masukkan gejala pasien" />
                             </div>
-
-                            <div class="col-sm-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                            </div>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="card-footer">
+                    <div class="col-sm-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
+                        <button type="button" class="btn btn-danger me-1 mb-1" onclick="return history.back()">Batal</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
