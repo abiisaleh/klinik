@@ -3,6 +3,7 @@
 class model
 {
     protected $table;
+    protected $primaryKey = 'id';
     private $db;
 
     public function __construct()
@@ -28,28 +29,45 @@ class model
 
     public function find($id)
     {
-        $sql = "SELECT * FROM $this->table where id=$id";
+        $sql = "SELECT * FROM $this->table where $this->primaryKey=$id";
         $data = mysqli_query($this->db, $sql)->fetch_assoc();
         return $data;
     }
 
     public function create(array $data)
     {
-        $field = implode(", ", array_keys($data));
-        $value = implode(", ", array_values($data));
-        $sql = "INSERT INTO pendaftaran ($field) VALUES ($value)";
+        foreach ($data as $key => $value) {
+            $keys[] = "$key";
+            $values[] = "$value";
+        }
+
+
+        $field = implode(", ", $keys);
+        $value = implode(", ", $values);
+        var_dump($value);
+        $sql = "INSERT INTO $this->table ($field) VALUES ($value)";
+        var_dump($sql);
         $data = mysqli_query($this->db, $sql);
         return $data;
     }
 
-    public function update($id, $data)
+    public function update(string $id, array $data)
     {
-        //
+        $dataToString = array_map(function ($key, $value) {
+            return "$key=\"$value\"";
+        }, array_keys($data), $data);
+
+        $keyValue = implode(', ', $dataToString);
+
+        $sql = "UPDATE pendaftaran SET $keyValue WHERE $this->primaryKey=$id";
+
+        $data = mysqli_query($this->db, $sql);
+        return $data;
     }
 
     public function delete($id)
     {
-        $sql = "DELETE FROM $this->table WHERE id=$id";
+        $sql = "DELETE FROM $this->table WHERE $this->primaryKey=$id";
         $data = mysqli_query($this->db, $sql);
         return $data;
     }

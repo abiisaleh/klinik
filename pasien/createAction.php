@@ -1,27 +1,13 @@
 <?php
-require_once "../config.php";
+require_once "../model/pasienModel.php";
 
 if (isset($_POST)) {
-    // ambil data dari formulir
-    $kode = $_POST['kode'];
-    $nama = $_POST['nama'];
-    $jk = $_POST['jk'];
-    $tempatlahir = $_POST['tempatlahir'];
-    $ttl = $_POST['ttl'];
-    $alamat = $_POST['alamat'];
-    $jenis = $_POST['jenis'];
-    $nim = $_POST['nim'];
-    $gejala = $_POST['gejala'];
-
-    // buat query  
-    $sql = "INSERT INTO pendaftaran (kode, nama, jk, tempatlahir, ttl, alamat, jenis,nim, gejala) 
-            VALUES ('$kode', '$nama', '$jk', '$tempatlahir', '$ttl', '$alamat', '$jenis', '$nim', '$gejala')";
-    $query = mysqli_query($connection, $sql);
+    $model = new pasienModel;
 
     session_start();
 
     // apakah query simpan berhasil?
-    if ($query) {
+    if ($model->create($_POST)) {
         $_SESSION['alert'] = [
             'type' => 'success',
             'msg' => 'data berhasil dibuat',

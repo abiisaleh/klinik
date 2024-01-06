@@ -1,15 +1,13 @@
 <?php
-include("../config.php");
+require_once "../model/pasienModel.php";
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
 
-    $sql = "DELETE FROM pendaftaran WHERE id=$id";
-    $query = mysqli_query($connection, $sql);
+    $model = new pasienModel;
 
     session_start();
 
-    if ($query) {
+    if ($model->delete($_GET['id'])) {
         $_SESSION['alert'] = [
             'type' => 'danger',
             'msg' => 'data berhasil dihapus',
